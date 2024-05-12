@@ -1,4 +1,4 @@
-import { Box, Container, Flex, Heading, Input, Stack, Text, VStack } from "@chakra-ui/react";
+import { Box, Container, Flex, Heading, Input, SimpleGrid, Text, VStack } from "@chakra-ui/react";
 import { FaSearch } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
@@ -40,7 +40,7 @@ const Index = () => {
           <Input placeholder="Search cities..." size="lg" mr={2} />
           <FaSearch color="gray.500" size="24px" />
         </Flex>
-        <Stack spacing={5}>
+        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={5}>
           {cities.map((city, index) => (
             <Box key={index} p={5} shadow="md" borderWidth="1px" borderRadius="lg">
               <Heading size="md">{city.name}</Heading>
@@ -48,7 +48,7 @@ const Index = () => {
               <Text fontWeight="bold">Rank: {city.rank}</Text>
             </Box>
           ))}
-        </Stack>
+        </SimpleGrid>
       </Box>
     </Container>
   );
