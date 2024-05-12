@@ -1,4 +1,4 @@
-import { Box, Container, Flex, Heading, Input, SimpleGrid, Text, VStack } from "@chakra-ui/react";
+import { Box, Container, Flex, Heading, Image, Input, SimpleGrid, Text, VStack } from "@chakra-ui/react";
 import { FaSearch } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
@@ -43,6 +43,7 @@ const Index = () => {
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={5}>
           {cities.map((city, index) => (
             <Box key={index} p={5} shadow="md" borderWidth="1px" borderRadius="lg">
+              <Image src={`https://source.unsplash.com/random/?${city.name}`} alt={`Image of ${city.name}`} width="100%" />
               <Heading size="md">{city.name}</Heading>
               <Text>{city.country}</Text>
               <Text fontWeight="bold">Rank: {city.rank}</Text>
