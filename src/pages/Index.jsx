@@ -1,14 +1,24 @@
-import { Box, Container, Flex, Heading, Image, Input, Stack, Text, VStack } from "@chakra-ui/react";
+import { Box, Container, Flex, Heading, Input, Stack, Text, VStack } from "@chakra-ui/react";
 import { FaSearch } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 const Index = () => {
-  const cities = [
-    { name: "Bali", country: "Indonesia", rank: 1 },
-    { name: "Lisbon", country: "Portugal", rank: 2 },
-    { name: "Bangkok", country: "Thailand", rank: 3 },
-    { name: "Barcelona", country: "Spain", rank: 4 },
-    { name: "Buenos Aires", country: "Argentina", rank: 5 },
-  ];
+  const [cities, setCities] = useState([]);
+
+  useEffect(() => {
+    fetch("https://sheetdb.io/api/v1/uczxbm9pwrsks")
+      .then((response) => response.json())
+      .then((data) => {
+        setCities(
+          data.map((item) => ({
+            name: item.city,
+            country: item.country,
+            rank: item.id,
+          })),
+        );
+      })
+      .catch((error) => console.error("Error fetching cities:", error));
+  }, []);
 
   return (
     <Container maxW="container.xl" p={0}>
